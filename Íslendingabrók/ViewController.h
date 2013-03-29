@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "ConnectionClass.h"
+
 @interface ViewController : UIViewController
+{
+    ConnectionClass *connection;
+}
 
 - (IBAction)bump:(id)sender;
 
