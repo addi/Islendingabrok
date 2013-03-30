@@ -52,13 +52,16 @@
         
         [connection connect];
     }
-    
-    
 }
 
 - (IBAction)bump:(id)sender
 {
-    [connection sendInfo];
+    [connection sendToken:[IslendingabokAPI sharedInstance].sessionId];
+}
+
+-(void)tokenReceived:(NSString*)theToken
+{
+    NSLog(@"token: %@", theToken);
 }
 
 @end

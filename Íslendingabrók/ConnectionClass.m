@@ -13,42 +13,55 @@
 
 @implementation ConnectionClass
 
+@synthesize delegate;
+
 - (void)connect
 {
     NSLog(@"Try to connect to pusher");
     
     client = [PTPusher pusherWithKey:@"012e661d4e313d195ea3" connectAutomatically:NO encrypted:YES];
     
+    client.authorizationURL = [NSURL URLWithString:@"http://ibpusherauth.appspot.com/pusher/auth"];
+    
     client.delegate = self;
     
     [client connect];
+    
+    channel = [client subscribeToPrivateChannelNamed:@"bla"];
+    
+    [channel bindToEventNamed:@"client-token" handleWithBlock:^(PTPusherEvent *event)
+     {
+         NSLog(@"Shake detected");
+         
+         NSString *strangersToken = [event.data valueForKey:@"token"];
+         
+         [delegate tokenReceived:strangersToken];
+     }];
 }
-
 
 - (void)pusher:(PTPusher *)pusher connectionDidConnect:(PTPusherConnection *)connection
 {
     NSLog(@"connected to pusher");
-    
-    channel = [client subscribeToPrivateChannelNamed:@"theChannel"];
-    
-    [channel bindToEventNamed:@"shake" handleWithBlock:^(PTPusherEvent *event)
-    {
-        NSLog(@"Shake detected");
-        
-//        NSDictionary *info = event.data;
-    }];
-    
-
-    
-    
-    
 }
 
-- (void)sendInfo
+- (void)pusher:(PTPusher *)pusher didSubscribeToChannel:(PTPusherChannel *)channel
 {
-    [channel triggerEventNamed:@"shake" data:nil];
+    NSLog(@"didSubscribeToChannel");    
 }
 
+- (void)pusher:(PTPusher *)pusher didReceiveErrorEvent:(PTPusherErrorEvent *)errorEvent
+{
+    
+    NSLog(@"ERROR: %@", errorEvent.description);
+}
 
+- (void)sendToken:(NSString*)authToken
+{
+    NSLog(@"sending info");
+    
+    NSDictionary *tokenDict = @{@"token": authToken};
+    
+    [channel triggerEventNamed:@"token" data:tokenDict];
+}
 
 @end

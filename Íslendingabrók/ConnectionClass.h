@@ -10,15 +10,22 @@
 
 #import "PTPusher.h"
 
+#import "ConnectionDelegate.h"
+
 @interface ConnectionClass : NSObject <PTPusherDelegate>
 {
     PTPusher *client;
     
     PTPusherPrivateChannel *channel;
+    
+    __unsafe_unretained id <ConnectionDelegate> delegate;
 }
 
 - (void)connect;
 
-- (void)sendInfo;
+- (void)sendToken:(NSString*)authToken;
+
+
+@property (assign) id delegate;
 
 @end

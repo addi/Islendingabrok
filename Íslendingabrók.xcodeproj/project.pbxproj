@@ -116,6 +116,7 @@
 		68C87FA917062E5C000D767C /* SocketRocket-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SocketRocket-Prefix.pch"; sourceTree = "<group>"; };
 		68C87FAA17062E5C000D767C /* SRWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRWebSocket.h; sourceTree = "<group>"; };
 		68C87FAB17062E5C000D767C /* SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRWebSocket.m; sourceTree = "<group>"; };
+		68CD404A17065C43004437FC /* ConnectionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectionDelegate.h; sourceTree = "<group>"; };
 		68E0335516FE345A0062D3E4 /* Íslendingabrók.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Íslendingabrók.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		68E0335816FE345A0062D3E4 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		68E0335A16FE345A0062D3E4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -305,6 +306,7 @@
 				685CF3CD17010F2C00F3D74A /* LoginViewController.xib */,
 				689EFA0D1705ECC000F4FA75 /* ConnectionClass.h */,
 				689EFA0E1705ECC000F4FA75 /* ConnectionClass.m */,
+				68CD404A17065C43004437FC /* ConnectionDelegate.h */,
 			);
 			path = "Íslendingabrók";
 			sourceTree = "<group>";
