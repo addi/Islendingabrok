@@ -1,4 +1,4 @@
-Islendingabrok
+Islendingabrók
 ===
 
 A simple app that i was working on, used the islendingabok api.
